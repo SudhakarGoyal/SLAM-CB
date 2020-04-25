@@ -12,19 +12,11 @@ def move(distribution, delta):
 def convolve(a, b):
     """Convolve distribution a and b and return the resulting new distribution."""
         # --->>> Put your code here.
-    if len(b.values) > len(a.values):
-        c = [0]*    ( 2*len(b.values) - len(a.values) )
-
-    else:
-        c = [0]*( 2*len(a.values) - len(b.values) )
-    k = [0.25, 0.5, 0.25]
+ 
+    c = [0]*( len(a.values) + len(b.values) -1 )
     for i in range(len(a.values)):
-        for j in range(0, 3):
-# =============================================================================
-#             print(i,j)
-#             print(a.values[i],"x",k[j])
-# =============================================================================
-            c[i+j] += a.values[i] * k[j] 
+        for j in range(len(b.values)):
+            c[i+j] += a.values[i] * b.values[j] 
     
     result  = Distribution()
     result.values = c
